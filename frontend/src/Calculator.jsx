@@ -1,5 +1,7 @@
 import { Box, Typography, Paper, TextField, Grid, Button } from "@mui/material";
 import { useState, useEffect } from "react";
+import { Avatar, ConnectButton } from "web3uikit";
+import { useMoralis, useWeb3Contract } from "react-moralis";
 
 const day_year = 365.2425;
 const week_year = 52.1775;
@@ -121,6 +123,7 @@ function pound_to_tonnes(pounds) {
 export default function Calculator() {
   const [inputs, setInputs] = useState(questions);
   const [total, setTotal] = useState(0);
+  const { account } = useMoralis();
 
   const handleInputChange = (section, question, value) => {
     // first convert the value to a number
@@ -161,11 +164,28 @@ export default function Calculator() {
         alignItems: "center",
         color: "white",
         padding: 3,
+        position: "relative", // Add this line
       }}
     >
+      <div
+        style={{
+          // Add this block
+          position: "absolute",
+          top: 0,
+          right: 0,
+          padding: 2,
+          margin: 6,
+          background: "white",
+          color: "black",
+          borderRadius: "8px",
+        }}
+      >
+        <ConnectButton moralisAuth={false} />
+      </div>
       <Paper
         elevation={3}
         sx={{
+          marginTop: 4,
           width: "80%",
           padding: 3,
           backgroundColor: "#3A4C3D",
@@ -197,8 +217,13 @@ export default function Calculator() {
           >
             Total Carbon Footprint: {total} tons CO2e / year
           </Typography>
-          <Button disabled variant="contained" color="secondary" size="large">
-            Mint NFT 🌱
+          <Button
+            disabled={account ? false : true}
+            variant="contained"
+            color="secondary"
+            size="large"
+          >
+            {account ? "Offset Carbon and NFT 🌱" : "Connect Wallet firstgo"}
           </Button>
         </Box>
       </Paper>
