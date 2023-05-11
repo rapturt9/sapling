@@ -138,7 +138,7 @@ function initCore() {
 
   scene = new THREE.Scene();
   var fogcol = 0xcefaeb; //0x1c0403
-  scene.fog = new THREE.FogExp2(fogcol, 0.0028); //new THREE.Fog(fogcol, 300, 1000);
+  scene.fog = new THREE.FogExp2(fogcol, 0.002); //new THREE.Fog(fogcol, 300, 1000);
   aspectRatio = WIDTH / HEIGHT;
   fieldOfView = 60;
   nearPlane = 0.1;

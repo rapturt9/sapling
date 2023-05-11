@@ -6,7 +6,7 @@ const TreeAnimationPage = () => {
   useEffect(() => {
     console.log(`Current address: ${address}`);
     window.frac = 1;
-    window.nTrees = 20;
+    window.nTrees = 100;
 
     const script = document.createElement("script");
     script.src = "./script.js";
