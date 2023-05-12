@@ -9,7 +9,7 @@ const TreeAnimationPage = () => {
     window.nTrees = 100;
 
     const script = document.createElement("script");
-    script.src = "./script.js";
+    script.src = "/script.js";
     script.async = true;
 
     document.body.appendChild(script);
