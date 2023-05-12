@@ -297,6 +297,7 @@ function createForest() {
 // TREE
 
 function createTree() {
+  console.log("tree");
   if (tree) {
     tree.fly(function () {
       scene.remove(tree.mesh);
@@ -1099,18 +1100,15 @@ function grow(mesh) {
   }
 }
 
-window.addEventListener("load", init, false);
-
-function init(event) {
-  createStats();
-  initCore();
-  //initGUI();
-  createLights();
-  createFloor();
-  createForest();
-  createTree();
-  loop();
-}
+console.log("init");
+createStats();
+initCore();
+//initGUI();
+createLights();
+createFloor();
+createForest();
+createTree();
+loop();
 
 function updateShadows() {
   scene.traverse(function (object) {

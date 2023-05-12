@@ -8,14 +8,23 @@ const TreeAnimationPage = () => {
     window.frac = 1;
     window.nTrees = 100;
 
-    const script = document.createElement("script");
-    script.src = "/script.js";
-    script.async = true;
+    // Check if the script is already loaded
+    let script = document.getElementById("myScript");
+    if (!script) {
+      script = document.createElement("script");
+      script.id = "myScript";
+      script.src = "/script.js";
+      script.async = true;
 
-    document.body.appendChild(script);
+      document.body.appendChild(script);
+    }
 
     return () => {
-      document.body.removeChild(script);
+      // Remove script when unmounting
+      const script = document.getElementById("myScript");
+      if (script) {
+        document.body.removeChild(script);
+      }
     };
   }, [address]);
   return (
