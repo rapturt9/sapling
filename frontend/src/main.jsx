@@ -8,6 +8,8 @@ import "@fontsource/roboto/500.css";
 import "@fontsource/roboto/700.css";
 import { HashRouter, Switch, Route, Link } from "react-router-dom";
 import TreeAnimationPage from "./TreeAnimationPage.jsx";
+//import { CeloProvider } from "@celo/react-celo";
+//import "@celo/react-celo/lib/styles.css";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
