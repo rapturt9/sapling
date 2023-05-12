@@ -15,12 +15,12 @@
     "@fontsource/roboto": "^4.5.8",
     "@mui/icons-material": "^5.11.16",
     "@mui/material": "^5.12.3",
+    "agent-base": "^7.0.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-modal": "^3.16.1",
-    "react-router-dom": "^6.11.1",
-    "react-scroll": "^1.8.9",
-    "agent-base": "^7.0.1"
+    "react-router-dom": "^5",
+    "react-scroll": "^1.8.9"
   },
   "devDependencies": {
     "@types/react": "^18.0.28",
