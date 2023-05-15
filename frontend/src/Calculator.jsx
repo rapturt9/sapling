@@ -1,5 +1,6 @@
 import { Box, Typography, Paper, TextField, Grid, Button } from "@mui/material";
 import { useState, useEffect } from "react";
+import { useCelo } from "@celo/react-celo";
 
 const day_year = 365.2425;
 const week_year = 52.1775;
@@ -119,9 +120,10 @@ function pound_to_tonnes(pounds) {
 }
 
 export default function Calculator() {
+  const { connect, address, useConnectedKit } = useCelo();
   const [inputs, setInputs] = useState(questions);
   const [total, setTotal] = useState(0);
-  const [account, setAccount] = useState(null);
+  const [carbonOffsetAmount, setCarbonOffsetAmount] = useState(0);
 
   const handleInputChange = (section, question, value) => {
     // first convert the value to a number
@@ -150,6 +152,33 @@ export default function Calculator() {
     setTotal(Math.round(total * 10) / 10);
   }, [inputs]);
 
+  useEffect(() => {
+    async function run() {
+      /*const kit = await getConnectedKit();
+      const provider = kit.connection.web3.currentProvider;
+      const signer = provider.getSigner();
+      const toucan = new ToucanClient("celo", provider, signer);
+      const tco2addresses = await toucan.redeemAuto2("NCT", parseEther("1"));*/
+    }
+    if (address) {
+      run();
+    }
+  }, [address]);
+
+  const handleOffsetAndNFT = async () => {
+    // Add logic here to retire carbon credits on Toucan
+    // and mint NFT. You might need to set up API calls
+    // to Toucan API to retire carbon credits. Make sure
+    // to handle errors and edge cases properly.
+    // Example:
+    // const response = await toucanApi.retireCarbonCredits(carbonOffsetAmount);
+    // if (response.success) {
+    //   // Mint NFT
+    // } else {
+    //   console.error("Failed to retire carbon credits:", response.error);
+    // }
+  };
+
   return (
     <Box
       id="calculator"
@@ -173,11 +202,25 @@ export default function Calculator() {
           right: 0,
           padding: 2,
           margin: 6,
-          background: "white",
-          color: "black",
-          borderRadius: "8px",
         }}
-      ></div>
+      >
+        {address ? (
+          <div
+            style={{
+              backgroundColor: "white",
+              padding: 4,
+              color: "black",
+              borderRadius: 4,
+            }}
+          >
+            Connected to {address}
+          </div>
+        ) : (
+          <Button onClick={connect} variant="contained" size="large">
+            Connect wallet
+          </Button>
+        )}
+      </div>
       <Paper
         elevation={3}
         sx={{
@@ -206,20 +249,25 @@ export default function Calculator() {
             gap: 2,
           }}
         >
-          {/* show the total carbon footprint here */}
           <Typography
             variant="h5"
             sx={{ fontWeight: "bold", textAlign: "center" }}
           >
             Total Carbon Footprint: {total} tons CO2e / year
           </Typography>
+          <TextField
+            label="Carbon Offset Amount"
+            value={carbonOffsetAmount}
+            onChange={(event) => setCarbonOffsetAmount(event.target.value)}
+          />
           <Button
-            disabled={account ? false : true}
+            disabled={!address}
             variant="contained"
             color="secondary"
             size="large"
+            onClick={handleOffsetAndNFT}
           >
-            {account ? "Offset Carbon and NFT 🌱" : "Connect Wallet firstgo"}
+            {address ? "Offset Carbon and NFT 🌱" : "Connect Wallet first"}
           </Button>
         </Box>
       </Paper>

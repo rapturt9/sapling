@@ -53,8 +53,7 @@ function LandingPage() {
             marginBottom: 2,
           }}
         >
-          Join our Discord community of people who are living carbon free.
-          Unlock reward prizes by staying carbon free!
+          Unlock reward prizes by staying carbon free and show off your impact!
         </Typography>
         <Link to="calculator" smooth duration={500}>
           <Button variant="contained" color="secondary" size="large">

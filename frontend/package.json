@@ -10,6 +10,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@celo-tools/use-contractkit": "^3.1.0",
     "@celo/contractkit": "^4.1.0",
     "@celo/react-celo": "^5.0.3",
     "@emotion/react": "^11.11.0",
@@ -17,14 +18,22 @@
     "@fontsource/roboto": "^4.5.8",
     "@mui/icons-material": "^5.11.16",
     "@mui/material": "^5.12.3",
-    "agent-base": "^7.0.1",
+    "@urql/core": "^4.0.7",
+    "bignumber.js": "^9.1.1",
+    "ethers": "^5.7.2",
+    "https-browserify": "^1.0.0",
+    "laravel-vite-plugin": "^0.7.6",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-modal": "^3.16.1",
     "react-router-dom": "^5",
-    "react-scroll": "^1.8.9"
+    "react-scroll": "^1.8.9",
+    "stream-browserify": "^3.0.0",
+    "web3": "^1.10.0"
   },
   "devDependencies": {
+    "@esbuild-plugins/node-globals-polyfill": "^0.2.3",
+    "@esbuild-plugins/node-modules-polyfill": "^0.2.2",
     "@types/react": "^18.0.28",
     "@types/react-dom": "^18.0.11",
     "@vitejs/plugin-react": "^4.0.0",
